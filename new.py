@@ -11,7 +11,7 @@ def last_update(file,key1,key2,r):
       fd.write(chunk)
   with open (file) as f:
     data = json.load(f)
-##iterate through list of dictionaries, find value for key ("name")
+##iterate through list of dictionaries
   repos = [re[key1] for re in data]
   last_update = [re[key2] for re in data]
   print(len(repos))
