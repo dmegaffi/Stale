@@ -22,7 +22,10 @@ def decoder(file,key1,key2):
     print("\n\t\t",x, " --- repo was last updated on --- ", y)
 
 def main():
-    decoder("output.txt", "name", "pushed_at")
+  r = requests.get('https://api.github.com/orgs/tendermint/repos?page=1&per_page=100')
+  r.json()
+  
+  decoder("output.txt", "name", "pushed_at")
 
 if __name__ == '__main__':
   
