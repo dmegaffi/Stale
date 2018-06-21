@@ -3,11 +3,9 @@ import json
 from pprint import pprint
 import re
 import requests
-r = requests.get('https://api.github.com/orgs/tendermint/repos?page=1&per_page=100')
-r.json()
 
 #pushes byte chunk
-def decoder(file,key1,key2):
+def last_update(file,key1,key2,r):
   with open(file, 'wb') as fd:
     for chunk in r.iter_content(chunk_size=128):
       fd.write(chunk)
@@ -25,7 +23,7 @@ def main():
   r = requests.get('https://api.github.com/orgs/tendermint/repos?page=1&per_page=100')
   r.json()
   
-  decoder("output.txt", "name", "pushed_at")
+  last_update("output.txt", "name", "pushed_at",r)
 
 if __name__ == '__main__':
   
